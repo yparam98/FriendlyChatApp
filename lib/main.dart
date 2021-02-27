@@ -38,31 +38,32 @@ class ChatMessage extends StatelessWidget {
           ),
           Card(
             child: Padding(
-              padding: const EdgeInsets.all(5.0),
+              padding: const EdgeInsets.all(2.0),
               child: Container(
                 margin: EdgeInsets.all(1.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(_name, style: TextStyle(fontSize: 18.0, color: Colors.white)),
+                    Text(_name, style: TextStyle(fontSize: 12.0, color: Colors.white)),
                     Row(
                       children: [
-                        Expanded(
+                        Flexible(
                           flex: 1,
                           child: Container(
                             margin: EdgeInsets.only(top: 5.0),
-                            child: Text(text),
-                            decoration: BoxDecoration(color: (Colors.white)),
+                            padding: EdgeInsets.all(2.0),
+                            color: Colors.white,
+                            child: Text(text, style: TextStyle(fontSize: 18.0, color: Colors.black)),
                           ),
-                        )
+                        ),
                       ],
-                    )
+                    ),
                   ],
                 ),
               ),
             ),
             color: Color.fromARGB(255, 1, 55, 92),
-          )
+          ),
         ],
       ),
     );
@@ -87,7 +88,8 @@ class _ChatScreenState extends State<ChatScreen> {
       ),
       body: Column(
         children: [
-          Flexible(
+          Expanded(
+            flex: 1,
             child: ListView.builder(
               padding: EdgeInsets.all(8.0),
               reverse: true,
@@ -95,7 +97,7 @@ class _ChatScreenState extends State<ChatScreen> {
               itemCount: _messages.length,
             ),
           ),
-          Divider(height: 1.0),
+          // Divider(height: 1.0),
           Container(
             decoration: BoxDecoration(color: Theme.of(context).cardColor),
             child: _buildTextComposer(),
@@ -109,7 +111,7 @@ class _ChatScreenState extends State<ChatScreen> {
     return IconTheme(
       data: IconThemeData(color: Theme.of(context).accentColor),
       child: Container(
-        margin: EdgeInsets.symmetric(horizontal: 8.0),
+        margin: EdgeInsets.symmetric(horizontal: 8.0, vertical: 0.0),
         child: Row(
           children: [
             Flexible(
